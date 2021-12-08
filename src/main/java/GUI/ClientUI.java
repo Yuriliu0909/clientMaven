@@ -9,6 +9,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.net.Socket;
+
 
 public class ClientUI extends Application {
     @Override
@@ -33,7 +36,11 @@ public class ClientUI extends Application {
         GridPane.setConstraints(start, 1, 0);
         start.setOnAction(value ->  {
             System.out.println("client request");
-            Client client=new Client();
+            try {
+                Client client = new Client(new Socket("localhost", 9090),"yuri");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
 
