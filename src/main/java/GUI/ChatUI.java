@@ -23,7 +23,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 
 
-public class ClientUI extends Application {
+public class ChatUI extends Application {
     private HBox hbox = new HBox();
     private VBox vbox = new VBox();
     private  TextField name = new TextField();

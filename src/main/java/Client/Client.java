@@ -2,7 +2,6 @@ package Client;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class Client {
     private Socket socket;
@@ -27,31 +26,22 @@ public class Client {
             bufferedWriter.write(username);
             bufferedWriter.newLine();
             bufferedWriter.flush();
-            Scanner scanner = new Scanner(System.in);
-            while (socket.isConnected()) {
-                String messageToSend = scanner.nextLine();
-                bufferedWriter.write(username + " " + messageToSend);
-                bufferedWriter.newLine();
-                bufferedWriter.close();
-            }
         } catch (IOException e) {
             closeEverything(socket, bufferedReader, bufferedWriter);
         }
     }
 
     public void listenForMessage() {
-        new Thread(() -> {
-            String msgFromGroupChat;
-            while (socket.isConnected()) {
-                try {
-                    msgFromGroupChat = bufferedReader.readLine();
+        while (socket.isConnected()) {
+            try {
+                String msgFromGroupChat = bufferedReader.readLine();
+                if(msgFromGroupChat != null) {
                     System.out.println(msgFromGroupChat);
-                    bufferedReader.close();
-                } catch (IOException e) {
-                    closeEverything(socket, bufferedReader, bufferedWriter);
                 }
+            } catch (IOException e) {
+                closeEverything(socket, bufferedReader, bufferedWriter);
             }
-        }).start();
+        }
     }
 
     public void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
