@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class ClientUINew extends Application {
+public class ClientUI extends Application {
     private HBox hbox = new HBox();
     private VBox vbox = new VBox();
     private  TextField name = new TextField();
@@ -50,23 +50,24 @@ public class ClientUINew extends Application {
         name.setPrefColumnCount(10);
         password.setPromptText("Enter your password: ");
         serverip.setPromptText("Enter Server IP address: ");
-        serverport.setPromptText("Enter Server port,eg:0808: ");
+        serverport.setPromptText("Enter Server port,eg:8080: ");
 
         GridPane.setConstraints(name, 0, 0);
         Button start = new Button("add client");
         GridPane.setConstraints(start, 1, 0);
 
         chatfield.setPromptText("Enter words: ");
+        chatfield.setMinSize(200,200);
         receiverName.setPromptText("who send message: ");
         Button chat = new Button("start chat");
         GridPane.setConstraints(start, 1, 0);
 
         vbox.getChildren().addAll(name,password,serverip,serverport,start,chatfield,receiverName,chat);
-        vbox.setSpacing(50);
-        VBox.setMargin(name, new Insets(10, 10, 10, 10));
-        VBox.setMargin(password, new Insets(10, 10, 10, 10));
-        VBox.setMargin(serverip, new Insets(10, 10, 10, 10));
-        VBox.setMargin(serverport, new Insets(10, 10, 10, 10));
+        vbox.setSpacing(10);
+        VBox.setMargin(name, new Insets(5, 5, 5, 5));
+        VBox.setMargin(password, new Insets(5, 5, 5, 5));
+        VBox.setMargin(serverip, new Insets(5, 5, 5, 5));
+        VBox.setMargin(serverport, new Insets(5, 5, 5, 5));
         VBox.setMargin(chatfield, new Insets(5, 5, 5, 5));
         VBox.setMargin(receiverName, new Insets(5, 5, 5, 5));
         vbox.setAlignment(Pos.CENTER);
