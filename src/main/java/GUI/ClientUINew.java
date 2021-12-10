@@ -82,7 +82,6 @@ public class ClientUINew extends Application {
         chat.setOnAction(value ->  {
             readInputValues();
             sendMsg();
-            System.out.println("start chat");
         });
     }
 
@@ -106,6 +105,7 @@ public class ClientUINew extends Application {
         //SEND:<sender>:<receiver>:message
         String msg = "SEND:"+username+":"+receiver+":"+input;
         client.sendMessage(msg);
+        System.out.println("start chat");
     }
 
     private void readInputValues() {

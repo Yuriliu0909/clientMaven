@@ -43,4 +43,5 @@ public class SocketClient extends Thread{
         //Thread is destroyed by the JVM when the run method completes
         new Thread(() -> printWriter.println(message)).start();
     }
+
 }
